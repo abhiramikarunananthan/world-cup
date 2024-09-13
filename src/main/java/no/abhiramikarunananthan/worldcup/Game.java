@@ -15,4 +15,8 @@ public class Game {
         this.awayScore = 0;
         this.id = id;
     }
+
+    public String getHomeTeam() {
+        return homeTeam;
+    }
 }
