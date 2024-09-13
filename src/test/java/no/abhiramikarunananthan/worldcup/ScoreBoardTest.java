@@ -64,6 +64,25 @@ class ScoreBoardTest {
 
 }
 
+@Test
+    void finishGameTest(){
+
+    String existingHomeTeam = gameOne.getHomeTeam();
+    String existingAwayTeam = gameOne.getAwayTeam();
+    String nonExistingHomeTeam = "japan";
+    String checkCapitalLettersHomeTeam = "CANADA";
+
+    //act
+    boolean gameFinishedTrue = scoreBoard.finishGame(existingHomeTeam, existingAwayTeam);
+    boolean gameNotFinishedNonExistingTeam = scoreBoard.finishGame(nonExistingHomeTeam, existingAwayTeam);
+    boolean checkCapitalLettersGameFinishedTrue = scoreBoard.finishGame(checkCapitalLettersHomeTeam, existingAwayTeam);
+
+    assertTrue(gameFinishedTrue);
+    assertFalse(gameNotFinishedNonExistingTeam);
+    assertTrue(checkCapitalLettersGameFinishedTrue);
+
+}
+
 
 
 }
