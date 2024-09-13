@@ -63,9 +63,54 @@ class GameTest {
        gameFour.setHomeScore(6);
 
         //assert
-        assertEquals(newHomeScoreGameTwo.getHomeScore, 3);
-        assertEquals(newHomeScoreGameFour.getHomeScore, 6);
+        assertEquals(gameTwo.getHomeScore(), 3);
+        assertEquals(gameFour.getHomeScore(), 6);
 
+
+    }
+    @Test
+    void setAwayScore(){
+
+        //act
+        gameOne.setAwayScore(3);
+        gameThree.setAwayScore(6);
+
+        //assert
+        assertEquals(gameOne.getAwayScore(), 2);
+        assertEquals(gameThree.getAwayScore(), 8);
+
+
+    }
+
+    @Test
+    void getHomeScore(){
+        //arrange
+        gameOne.setHomeScore(1);
+        gameTwo.setHomeScore(2);
+
+        //act
+        int homeScoreGameOne = gameOne.getHomeScore();
+        int homeScoreGameTwo = gameTwo.getHomeScore();
+
+        //assert
+        assertEquals(homeScoreGameOne, 1);
+        assertEquals(homeScoreGameTwo, 2);
+
+    }
+
+    @Test
+    void getAwayScore(){
+        //arrange
+        gameThree.setAwayScore(3);
+        gameFour.setAwayScore(4);
+
+        //act
+        int awayScoreGameThree = gameThree.getAwayScore();
+        int awayScoreGameFour = gameFour.getAwayScore();
+
+        //assert
+        assertEquals(awayScoreGameThree, 3);
+        assertEquals(awayScoreGameFour, 4);
 
     }
 }
