@@ -16,4 +16,12 @@ public class ScoreBoard {
     }
 
 
+    public boolean startGame(Game game){
+        if(!scoreBoard.contains(game)){
+            scoreBoard.add(game);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
