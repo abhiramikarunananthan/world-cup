@@ -7,13 +7,15 @@ public class Game {
     private int homeScore;
     private int awayScore;
     private int id;
+    private static int nextId = 1;
+
 
     public Game(String homeTeam, String awayTeam, int id) {
         this.homeTeam = homeTeam.toLowerCase();
         this.awayTeam = awayTeam.toLowerCase();
         this.homeScore = 0;
         this.awayScore = 0;
-        this.id = id;
+        this.id = nextId++;
     }
 
     public String getHomeTeam() {
