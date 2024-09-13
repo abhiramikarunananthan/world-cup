@@ -43,4 +43,15 @@ class GameTest {
         assertEquals(awayTeamTwo, "norway");
         assertEquals(awayTeamFour, "denmark");
     }
+    @Test
+    void getId() {
+        //act
+        int gameOneId = gameOne.getId();
+        int gameThreeId = gameThree.getId();
+
+        //assert
+        assertEquals(gameOneId, 1);
+        assertEquals(gameThreeId, 3);
+
+    }
 }
