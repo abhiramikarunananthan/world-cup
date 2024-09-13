@@ -9,8 +9,8 @@ public class Game {
     private int id;
 
     public Game(String homeTeam, String awayTeam, int id) {
-        this.homeTeam = homeTeam;
-        this.awayTeam = awayTeam;
+        this.homeTeam = homeTeam.toLowerCase();
+        this.awayTeam = awayTeam.toLowerCase();
         this.homeScore = 0;
         this.awayScore = 0;
         this.id = id;
