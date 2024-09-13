@@ -68,6 +68,9 @@ public class Game {
      * @param homeScore home team's new score
      */
     public void setHomeScore(int homeScore) {
+        if (homeScore < 0){
+            throw new IllegalArgumentException("Score cannot be negative");
+        }
         this.homeScore = homeScore;
     }
 
@@ -76,6 +79,9 @@ public class Game {
      * @param awayScore away team's new score
      */
     public void setAwayScore(int awayScore) {
+        if (awayScore < 0){
+            throw new IllegalArgumentException("Score cannot be negative");
+        }
         this.awayScore = awayScore;
     }
 
