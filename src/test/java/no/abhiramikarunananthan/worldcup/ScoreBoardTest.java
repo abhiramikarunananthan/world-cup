@@ -41,6 +41,7 @@ class ScoreBoardTest {
     void updateScoreTest(){
 
     //arrange
+    scoreBoard.startGame(gameOne);
     String homeTeam = gameOne.getHomeTeam();
     String awayTeam = gameOne.getAwayTeam();
     int newScore = 3;
@@ -48,11 +49,13 @@ class ScoreBoardTest {
 
     //act
     boolean trueScore = scoreBoard.updateScore(homeTeam, awayTeam, newScore, newScore);
-    boolean falseScore = scoreBoard.updateScore(homeTeam, awayTeam, newScore, illegalScore);
 
-    //
-    assertTrue(trueScore);
-    assertFalse(falseScore);
+    //assert
+    assertTrue(trueScore, "Score should be updated successfully for valid input.");
+    //act & assert
+    assertThrows(IllegalArgumentException.class, () -> {
+        scoreBoard.updateScore(homeTeam, awayTeam, newScore, illegalScore);
+    }, "Updating score with a negative value should throw an IllegalArgumentException.");
 
 }
 
