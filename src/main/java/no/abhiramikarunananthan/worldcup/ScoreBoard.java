@@ -27,7 +27,7 @@ public class ScoreBoard {
 
     public boolean updateScore(String homeTeam, String awayTeam, int newHomeScore, int newAwayScore){
         for (Game game: scoreBoard){
-            if(game.getHomeTeam().equals(homeTeam) && game.getAwayTeam().equals(awayTeam)){
+            if(game.getHomeTeam().equals(homeTeam.toLowerCase()) && game.getAwayTeam().equals(awayTeam.toLowerCase())){
                 game.setHomeScore(newHomeScore);
                 game.setAwayScore(newAwayScore);
                 return true;
