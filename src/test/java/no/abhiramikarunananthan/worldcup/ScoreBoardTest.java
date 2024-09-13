@@ -37,6 +37,25 @@ class ScoreBoardTest {
 
 }
 
+@Test
+    void updateScoreTest(){
+
+    //arrange
+    String homeTeam = gameOne.getHomeTeam();
+    String awayTeam = gameOne.getAwayTeam();
+    int newScore = 3;
+    int illegalScore = -4;
+
+    //act
+    boolean trueScore = scoreBoard.updateScore(homeTeam, awayTeam, newScore, newScore);
+    boolean falseScore = scoreBoard.updateScore(homeTeam, awayTeam, newScore, illegalScore);
+
+    //
+    assertTrue(trueScore);
+    assertFalse(falseScore);
+
+}
+
 
 
 }
