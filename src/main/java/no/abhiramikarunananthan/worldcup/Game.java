@@ -19,4 +19,8 @@ public class Game {
     public String getHomeTeam() {
         return homeTeam;
     }
+
+    public String getAwayTeam() {
+        return awayTeam;
+    }
 }
