@@ -54,4 +54,18 @@ class GameTest {
         assertEquals(gameThreeId, 3);
 
     }
+
+    @Test
+    void setHomeScore(){
+
+        //act
+       gameTwo.setHomeScore(3);
+       gameFour.setHomeScore(6);
+
+        //assert
+        assertEquals(newHomeScoreGameTwo.getHomeScore, 3);
+        assertEquals(newHomeScoreGameFour.getHomeScore, 6);
+
+
+    }
 }
