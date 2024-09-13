@@ -23,4 +23,8 @@ public class Game {
     public String getAwayTeam() {
         return awayTeam;
     }
+
+    public int getId() {
+        return id;
+    }
 }
