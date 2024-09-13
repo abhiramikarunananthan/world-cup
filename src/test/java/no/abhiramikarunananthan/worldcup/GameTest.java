@@ -32,4 +32,15 @@ class GameTest {
         assertEquals(homeTeamOne, "canada");
         assertEquals(homeTeamThree, "sweden");
     }
+
+    @Test
+    void getAwayTeam(){
+        //act
+        String awayTeamTwo = gameTwo.getAwayTeam();
+        String awayTeamFour = gameFour.getAwayTeam();
+
+        //assert
+        assertEquals(awayTeamTwo, "norway");
+        assertEquals(awayTeamFour, "denmark");
+    }
 }
