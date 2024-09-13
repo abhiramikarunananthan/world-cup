@@ -1,5 +1,6 @@
 package no.abhiramikarunananthan.worldcup;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -7,19 +8,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class GameTest {
 
-    private Game gameOne;
-    private Game gameTwo;
-    private Game gameThree;
-    private Game gameFour;
+    private static Game gameOne;
+    private static Game gameTwo;
+    private static Game gameThree;
+    private static Game gameFour;
 
 
-    @BeforeEach
+    @BeforeAll
     //arrange
-    public void setUp(){
-        gameOne = new Game("Canada", "USA", 1);
-        gameTwo = new Game("Spain", "Norway", 2);
-        gameThree = new Game("Sweden", "England", 3);
-        gameFour = new Game("Croatia", "Denmark", 4);
+    public static void setUp(){
+        gameOne = new Game("Canada", "USA");
+        gameTwo = new Game("Spain", "Norway");
+        gameThree = new Game("Sweden", "England");
+        gameFour = new Game("Croatia", "Denmark");
     }
 
     @Test
@@ -76,8 +77,8 @@ class GameTest {
         gameThree.setAwayScore(6);
 
         //assert
-        assertEquals(gameOne.getAwayScore(), 2);
-        assertEquals(gameThree.getAwayScore(), 8);
+        assertEquals(gameOne.getAwayScore(), 3);
+        assertEquals(gameThree.getAwayScore(), 6);
 
 
     }
