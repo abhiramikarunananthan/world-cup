@@ -25,15 +25,17 @@ public class ScoreBoard {
         }
     }
 
-    public boolean updateScore(String homeTeam, String awayTeam, int newHomeScore, int newAwayScore){
-        for (Game game: scoreBoard){
-            if(game.getHomeTeam().equals(homeTeam.toLowerCase()) && game.getAwayTeam().equals(awayTeam.toLowerCase())){
-                game.setHomeScore(newHomeScore);
-                game.setAwayScore(newAwayScore);
-                return true;
-            }
-        }
-        return false;
+    public boolean updateScore(String homeTeam, String awayTeam, int newHomeScore, int newAwayScore) {
+        return scoreBoard.stream()
+                .filter(game -> game.getHomeTeam().equalsIgnoreCase(homeTeam)
+                        && game.getAwayTeam().equalsIgnoreCase(awayTeam))
+                .findFirst()
+                .map(game -> {
+                    game.setHomeScore(newHomeScore);
+                    game.setAwayScore(newAwayScore);
+                    return true;
+                })
+                .orElse(false);
     }
 
 }
