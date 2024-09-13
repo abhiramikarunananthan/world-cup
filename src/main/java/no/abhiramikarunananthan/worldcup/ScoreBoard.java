@@ -24,4 +24,16 @@ public class ScoreBoard {
             return false;
         }
     }
+
+    public boolean updateScore(String homeTeam, String awayTeam, int newHomeScore, int newAwayScore){
+        for (Game game: scoreBoard){
+            if(game.getHomeTeam().equals(homeTeam) && game.getAwayTeam().equals(awayTeam)){
+                game.setHomeScore(newHomeScore);
+                game.setAwayScore(newAwayScore);
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
