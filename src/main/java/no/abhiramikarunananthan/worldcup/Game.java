@@ -10,7 +10,7 @@ public class Game {
     private static int nextId = 1;
 
 
-    public Game(String homeTeam, String awayTeam, int id) {
+    public Game(String homeTeam, String awayTeam) {
         this.homeTeam = homeTeam.toLowerCase();
         this.awayTeam = awayTeam.toLowerCase();
         this.homeScore = 0;
@@ -29,4 +29,21 @@ public class Game {
     public int getId() {
         return id;
     }
+
+    public int getHomeScore() {
+        return homeScore;
+    }
+    public int getAwayScore() {
+        return awayScore;
+    }
+
+    public void setHomeScore(int homeScore) {
+        this.homeScore = homeScore;
+    }
+
+    public void setAwayScore(int awayScore) {
+        this.awayScore = awayScore;
+    }
+
+
 }
