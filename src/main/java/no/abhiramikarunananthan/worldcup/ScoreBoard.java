@@ -23,21 +23,17 @@ public class ScoreBoard {
         }
     }
 
-    public boolean updateScore(String homeTeam, String awayTeam, int newHomeScore, int newAwayScore) {
-        return scoreBoard.stream()
-                .filter(game -> game.getHomeTeam().equalsIgnoreCase(homeTeam)
-                        && game.getAwayTeam().equalsIgnoreCase(awayTeam))
-                .findFirst()
-                .map(game -> {
-                    game.setHomeScore(newHomeScore);
-                    game.setAwayScore(newAwayScore);
-                    return true;
-                })
-                .orElse(false);
+    public boolean updateScore(Game game, int newHomeScore, int newAwayScore) {
+        if (scoreBoard.contains(game)) {
+            game.setHomeScore(newHomeScore);
+            game.setAwayScore(newAwayScore);
+            return true;
+        }
+        return false;
     }
 
 
-    // er det dumt at den itirerer gjennom mens jeg remove?
+
     public boolean finishGame(Game game) {
         return scoreBoard.remove(game);
     }
