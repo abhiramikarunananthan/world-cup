@@ -11,8 +11,7 @@ public class Game {
     private String awayTeam;
     private int homeScore;
     private int awayScore;
-    private int id;
-    private static int nextId = 1;
+
 
     /**
      * constructor for game class
@@ -20,11 +19,10 @@ public class Game {
      * @param awayTeam away team of the game
      */
     public Game(String homeTeam, String awayTeam) {
-        this.homeTeam = homeTeam.toLowerCase();
-        this.awayTeam = awayTeam.toLowerCase();
+        this.homeTeam = homeTeam;
+        this.awayTeam = awayTeam;
         this.homeScore = 0;
         this.awayScore = 0;
-        this.id = nextId++;
     }
 
     /**
@@ -41,13 +39,6 @@ public class Game {
         return awayTeam;
     }
 
-    /**
-     * get method to retrieve unique id of game
-     * @return unique game id
-     */
-    public int getId() {
-        return id;
-    }
 
     /**
      * get method to retrieve score of the home team
