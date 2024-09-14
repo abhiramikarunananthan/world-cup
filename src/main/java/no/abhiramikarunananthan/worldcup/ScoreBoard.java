@@ -24,6 +24,9 @@ public class ScoreBoard {
     }
 
     public boolean updateScore(Game game, int newHomeScore, int newAwayScore) {
+        if (newHomeScore < 0 || newAwayScore < 0){
+            throw new IllegalArgumentException("New score cannot be negative!");
+        }
         if (scoreBoard.contains(game)) {
             game.setHomeScore(newHomeScore);
             game.setAwayScore(newAwayScore);
