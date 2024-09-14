@@ -6,12 +6,11 @@ import java.util.stream.Collectors;
 public class ScoreBoard {
 
     private List<Game> scoreBoard;
-    private List<Game> summary;
+
 
 
     public ScoreBoard() {
         this.scoreBoard = new ArrayList<Game>();
-        this.summary = new ArrayList<Game>();
     }
 
 
@@ -52,10 +51,9 @@ public class ScoreBoard {
     }
 
     public List<Game> getSummary() {
-        summary = new ArrayList<>(scoreBoard);
-        return summary.stream()
+        return scoreBoard.stream()
                 .sorted(Comparator.comparingInt(Game::getTotalScore).reversed()
-                        .thenComparingInt(Game::getId))
+                        .thenComparingInt(scoreBoard::indexOf))
                 .collect(Collectors.toList());
     }
 }
