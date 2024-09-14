@@ -1,5 +1,7 @@
 package no.abhiramikarunananthan.worldcup;
 
+import java.util.Objects;
+
 /**
  * Game class
  */
@@ -61,6 +63,14 @@ public class Game {
      */
     public int getAwayScore() {
         return awayScore;
+    }
+
+    /**
+     * get method to retrieve total score of the home team and away team
+     * @return total score of home team and away team
+     */
+    public int getTotalScore() {
+        return awayScore + homeScore;
     }
 
     /**

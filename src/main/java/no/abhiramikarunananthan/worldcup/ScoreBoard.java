@@ -1,9 +1,7 @@
 package no.abhiramikarunananthan.worldcup;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ScoreBoard {
 
@@ -40,7 +38,7 @@ public class ScoreBoard {
     }
 
 
-
+    // er det dumt at den itirerer gjennom mens jeg remove?
     public boolean finishGame(String homeTeam, String awayTeam) {
         for(Game game: scoreBoard){
             if (game.getHomeTeam().equals(homeTeam.toLowerCase())&& game.getAwayTeam()
@@ -53,4 +51,11 @@ public class ScoreBoard {
 
     }
 
+    public List<Game> getSummary() {
+        summary = new ArrayList<>(scoreBoard);
+        return summary.stream()
+                .sorted(Comparator.comparingInt(Game::getTotalScore).reversed()
+                        .thenComparingInt(Game::getId))
+                .collect(Collectors.toList());
+    }
 }
