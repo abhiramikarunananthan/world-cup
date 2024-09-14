@@ -49,24 +49,24 @@ class ScoreBoardTest {
 
         //arrange
         scoreBoard.startGame(gameOne);
-        String homeTeam = gameOne.getHomeTeam();
-        String awayTeam = gameOne.getAwayTeam();
-        String testForCapitalLetterHomeTeamName = gameOne.getHomeTeam().toUpperCase();
-        int newScore = 3;
+        scoreBoard.startGame(gameTwo);
+        Game gameNotInScoreboard = new Game("Japan", "China");
+        int newHomeScore = 3;
+        int newAwayScore = 2;
         int illegalScore = -4;
 
         //act
-        boolean trueScore = scoreBoard.updateScore(homeTeam, awayTeam, newScore, newScore);
-        boolean trueTeamName = scoreBoard.updateScore(testForCapitalLetterHomeTeamName, awayTeam, newScore, newScore);
+        boolean scoreIsUpdated = scoreBoard.updateScore(gameOne, newHomeScore, newAwayScore);
+        boolean scoreNotUpdated = scoreBoard.updateScore(gameNotInScoreboard, newHomeScore, newAwayScore);
 
 
         //assert
-        assertTrue(trueScore, "Score should be updated successfully for valid input.");
-        assertTrue(trueTeamName, "Score should be updated successfully for valid input.");
+        assertTrue(scoreIsUpdated, "Score should be updated successfully for valid game and scores");
+        assertFalse(scoreNotUpdated, "Score should not be updated for non existing game");
 
         //act & assert
         assertThrows(IllegalArgumentException.class, () -> {
-            scoreBoard.updateScore(homeTeam, awayTeam, newScore, illegalScore);
+            scoreBoard.updateScore(gameTwo, newHomeScore, illegalScore);
         }, "Updating score with a negative value should throw an IllegalArgumentException.");
 
     }
@@ -76,19 +76,16 @@ class ScoreBoardTest {
 
         //arrange
         scoreBoard.startGame(gameOne);
-        Game wrongHomeTeam = new Game("Japan", "Norway");
-
-
-
+        Game gameNotInScoreboard = new Game("Japan", "Norway");
 
 
         //act
-        boolean gameFinishedTrue = scoreBoard.finishGame(gameOne);
-        boolean gameNotFinishedNonExistingTeam = scoreBoard.finishGame(wrongHomeTeam);
+        boolean gameFinished = scoreBoard.finishGame(gameOne);
+        boolean gameNotFinished = scoreBoard.finishGame(gameNotInScoreboard);
 
         //assert
-        assertTrue(gameFinishedTrue, "Should return true as the existing games are provided");
-        assertFalse(gameNotFinishedNonExistingTeam, "Should return false as home team provided does not exist");
+        assertTrue(gameFinished, "Should return true as the existing game is removed");
+        assertFalse(gameNotFinished, "Should return false as provided game does not exist in scoreboard");
 
     }
 
@@ -104,9 +101,9 @@ class ScoreBoardTest {
 
         int expectedNumberOfGamesInTheList = 3;
 
-        scoreBoard.updateScore("Spain", "Norway", 2, 0);
-        scoreBoard.updateScore("Canada", "USA", 0, 1);
-        scoreBoard.updateScore("Sweden", "Denmark", 0, 1);
+        scoreBoard.updateScore(gameOne, 1, 0);
+        scoreBoard.updateScore(gameTwo, 2, 0);
+        scoreBoard.updateScore(gameThree, 0, 1);
 
         scoreBoard.finishGame(gameFour);
 
@@ -116,9 +113,9 @@ class ScoreBoardTest {
         // Assert
         assertEquals(expectedNumberOfGamesInTheList, sortedGames.size());
 
-        assertEquals("Spain", sortedGames.get(0).getHomeTeam());
-        assertEquals("Canada", sortedGames.get(1).getHomeTeam());
-        assertEquals("Sweden", sortedGames.get(2).getHomeTeam());
-    }
+        assertEquals(gameTwo, sortedGames.get(0));
+        assertEquals(gameOne, sortedGames.get(1));
+        assertEquals(gameThree, sortedGames.get(2));
+        }
     }
 
