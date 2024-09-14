@@ -76,26 +76,19 @@ class ScoreBoardTest {
 
         //arrange
         scoreBoard.startGame(gameOne);
-        scoreBoard.startGame(gameTwo);
-        scoreBoard.startGame(gameThree);
+        Game wrongHomeTeam = new Game("Japan", "Norway");
 
-        String existingHomeTeamGameOne = gameOne.getHomeTeam();
-        String existingAwayTeamGameOne = gameOne.getAwayTeam();
-        String existingAwayTeamGameTwo = gameTwo.getAwayTeam();
-        String checkCapitalLettersHomeTeam = gameThree.getHomeTeam().toUpperCase();
-        String existingAwayTeamGameThree = gameThree.getAwayTeam();
-        String nonExistingHomeTeam = "japan";
+
+
 
 
         //act
-        boolean gameFinishedTrue = scoreBoard.finishGame(existingHomeTeamGameOne, existingAwayTeamGameOne);
-        boolean gameNotFinishedNonExistingTeam = scoreBoard.finishGame(nonExistingHomeTeam, existingAwayTeamGameTwo);
-        boolean checkCapitalLettersGameFinishedTrue = scoreBoard.finishGame(checkCapitalLettersHomeTeam, existingAwayTeamGameThree);
+        boolean gameFinishedTrue = scoreBoard.finishGame(gameOne);
+        boolean gameNotFinishedNonExistingTeam = scoreBoard.finishGame(wrongHomeTeam);
 
         //assert
         assertTrue(gameFinishedTrue, "Should return true as the existing games are provided");
         assertFalse(gameNotFinishedNonExistingTeam, "Should return false as home team provided does not exist");
-        assertTrue(checkCapitalLettersGameFinishedTrue, "Should return true as the method converts capital letter to lower case");
 
     }
 
@@ -115,7 +108,7 @@ class ScoreBoardTest {
         scoreBoard.updateScore("Canada", "USA", 0, 1);
         scoreBoard.updateScore("Sweden", "Denmark", 0, 1);
 
-        scoreBoard.finishGame(gameFour.getHomeTeam(), gameFour.getAwayTeam());
+        scoreBoard.finishGame(gameFour);
 
         // Act
         List<Game> sortedGames = scoreBoard.getSummary();
@@ -123,9 +116,9 @@ class ScoreBoardTest {
         // Assert
         assertEquals(expectedNumberOfGamesInTheList, sortedGames.size());
 
-        assertEquals("spain", sortedGames.get(0).getHomeTeam());
-        assertEquals("canada", sortedGames.get(1).getHomeTeam());
-        assertEquals("sweden", sortedGames.get(2).getHomeTeam());
+        assertEquals("Spain", sortedGames.get(0).getHomeTeam());
+        assertEquals("Canada", sortedGames.get(1).getHomeTeam());
+        assertEquals("Sweden", sortedGames.get(2).getHomeTeam());
     }
     }
 
