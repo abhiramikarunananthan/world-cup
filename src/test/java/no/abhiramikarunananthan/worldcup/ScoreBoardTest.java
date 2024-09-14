@@ -4,6 +4,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -13,6 +16,8 @@ class ScoreBoardTest {
     private Game gameOne;
     private Game gameTwo;
     private Game gameThree;
+    private Game gameFour;
+
 
 
     @BeforeEach
@@ -22,6 +27,8 @@ class ScoreBoardTest {
         gameOne = new Game("Canada", "USA");
         gameTwo = new Game("Spain", "Norway");
         gameThree = new Game("Sweden", "Denmark");
+        gameFour = new Game("Croatia", "Finland");
+
 
     }
 
@@ -87,6 +94,7 @@ class ScoreBoardTest {
         boolean gameNotFinishedNonExistingTeam = scoreBoard.finishGame(nonExistingHomeTeam, existingAwayTeamGameTwo);
         boolean checkCapitalLettersGameFinishedTrue = scoreBoard.finishGame(checkCapitalLettersHomeTeam, existingAwayTeamGameThree);
 
+        //assert
         assertTrue(gameFinishedTrue);
         assertFalse(gameNotFinishedNonExistingTeam);
         assertTrue(checkCapitalLettersGameFinishedTrue);
@@ -94,6 +102,32 @@ class ScoreBoardTest {
     }
 
 
+    @Test
+    void getSummaryTest(){
 
+        // Arrange
+        scoreBoard.startGame(gameOne);
+        scoreBoard.startGame(gameTwo);
+        scoreBoard.startGame(gameThree);
+        scoreBoard.startGame(gameFour);
 
-}
+        int expectedNumberOfGamesInTheList = 3;
+
+        scoreBoard.updateScore("Spain", "Norway", 2, 0);
+        scoreBoard.updateScore("Canada", "USA", 0, 1);
+        scoreBoard.updateScore("Sweden", "Denmark", 0, 1);
+
+        scoreBoard.finishGame(gameFour.getHomeTeam(), gameFour.getAwayTeam());
+
+        // Act
+        List<Game> sortedGames = scoreBoard.getSummary();
+
+        // Assert
+        assertEquals(expectedNumberOfGamesInTheList, sortedGames.size());
+
+        assertEquals("Spain", sortedGames.get(0).getHomeTeam());
+        assertEquals("Canada", sortedGames.get(1).getHomeTeam());
+        assertEquals("Sweden", sortedGames.get(2).getHomeTeam());
+    }
+    }
+
