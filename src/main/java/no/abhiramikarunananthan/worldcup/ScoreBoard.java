@@ -1,12 +1,13 @@
 package no.abhiramikarunananthan.worldcup;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ScoreBoard {
 
     private List<Game> scoreBoard;
-
     private List<Game> summary;
 
 
@@ -36,6 +37,20 @@ public class ScoreBoard {
                     return true;
                 })
                 .orElse(false);
+    }
+
+
+
+    public boolean finishGame(String homeTeam, String awayTeam) {
+        for(Game game: scoreBoard){
+            if (game.getHomeTeam().equals(homeTeam.toLowerCase())&& game.getAwayTeam()
+                    .equals(awayTeam.toLowerCase())){
+                scoreBoard.remove(game);
+                return true;
+            }
+        }
+        return false;
+
     }
 
 }
