@@ -38,16 +38,8 @@ public class ScoreBoard {
 
 
     // er det dumt at den itirerer gjennom mens jeg remove?
-    public boolean finishGame(String homeTeam, String awayTeam) {
-        for(Game game: scoreBoard){
-            if (game.getHomeTeam().equals(homeTeam.toLowerCase())&& game.getAwayTeam()
-                    .equals(awayTeam.toLowerCase())){
-                scoreBoard.remove(game);
-                return true;
-            }
-        }
-        return false;
-
+    public boolean finishGame(Game game) {
+        return scoreBoard.remove(game);
     }
 
     public List<Game> getSummary() {
