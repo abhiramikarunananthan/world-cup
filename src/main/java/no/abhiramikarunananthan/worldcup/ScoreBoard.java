@@ -3,19 +3,18 @@ package no.abhiramikarunananthan.worldcup;
 import java.util.*;
 import java.util.stream.Collectors;
 
+
 public class ScoreBoard {
 
     private List<Game> scoreBoard;
 
-
-
     public ScoreBoard() {
-        this.scoreBoard = new ArrayList<Game>();
+        this.scoreBoard = new ArrayList<>();
     }
 
 
-    public boolean startGame(Game game){
-        if(!scoreBoard.contains(game)){
+    public boolean startGame(Game game) {
+        if (!scoreBoard.contains(game)) {
             scoreBoard.add(game);
             return true;
         } else {
@@ -24,7 +23,7 @@ public class ScoreBoard {
     }
 
     public boolean updateScore(Game game, int newHomeScore, int newAwayScore) {
-        if (newHomeScore < 0 || newAwayScore < 0){
+        if (newHomeScore < 0 || newAwayScore < 0) {
             throw new IllegalArgumentException("New score cannot be negative!");
         }
         if (scoreBoard.contains(game)) {
@@ -34,7 +33,6 @@ public class ScoreBoard {
         }
         return false;
     }
-
 
 
     public boolean finishGame(Game game) {
@@ -47,4 +45,15 @@ public class ScoreBoard {
                         .thenComparingInt(scoreBoard::indexOf))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public String toString() {
+        StringBuilder finalString = new StringBuilder();
+        for (Game game : this.getSummary()) {
+            finalString.append(this.getSummary().indexOf(game) + 1).append(". ").append(game.toString()).append("\n");
+        }
+        return finalString.toString();
+    }
+
+
 }

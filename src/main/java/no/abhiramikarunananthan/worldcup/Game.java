@@ -86,5 +86,8 @@ public class Game {
         this.awayScore = awayScore;
     }
 
-
+    @Override
+    public String toString() {
+        return homeTeam + " "+ homeScore + " - " + awayTeam + " " + awayScore;
+    }
 }
