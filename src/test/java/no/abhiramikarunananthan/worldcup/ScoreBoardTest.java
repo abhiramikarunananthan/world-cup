@@ -1,10 +1,8 @@
 package no.abhiramikarunananthan.worldcup;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -95,9 +93,9 @@ class ScoreBoardTest {
         boolean checkCapitalLettersGameFinishedTrue = scoreBoard.finishGame(checkCapitalLettersHomeTeam, existingAwayTeamGameThree);
 
         //assert
-        assertTrue(gameFinishedTrue);
-        assertFalse(gameNotFinishedNonExistingTeam);
-        assertTrue(checkCapitalLettersGameFinishedTrue);
+        assertTrue(gameFinishedTrue, "Should return true as the existing games are provided");
+        assertFalse(gameNotFinishedNonExistingTeam, "Should return false as home team provided does not exist");
+        assertTrue(checkCapitalLettersGameFinishedTrue, "Should return true as the method converts capital letter to lower case");
 
     }
 
@@ -125,9 +123,9 @@ class ScoreBoardTest {
         // Assert
         assertEquals(expectedNumberOfGamesInTheList, sortedGames.size());
 
-        assertEquals("Spain", sortedGames.get(0).getHomeTeam());
-        assertEquals("Canada", sortedGames.get(1).getHomeTeam());
-        assertEquals("Sweden", sortedGames.get(2).getHomeTeam());
+        assertEquals("spain", sortedGames.get(0).getHomeTeam());
+        assertEquals("canada", sortedGames.get(1).getHomeTeam());
+        assertEquals("sweden", sortedGames.get(2).getHomeTeam());
     }
     }
 
