@@ -4,11 +4,11 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 
-public class ScoreBoard {
+public class Scoreboard {
 
     private List<Game> scoreBoard;
 
-    public ScoreBoard() {
+    public Scoreboard() {
         this.scoreBoard = new ArrayList<>();
     }
 

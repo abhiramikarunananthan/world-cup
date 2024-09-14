@@ -8,9 +8,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-class ScoreBoardTest {
+class ScoreboardTest {
 
-    private ScoreBoard scoreBoard;
+    private Scoreboard scoreBoard;
     private Game gameOne;
     private Game gameTwo;
     private Game gameThree;
@@ -21,7 +21,7 @@ class ScoreBoardTest {
     @BeforeEach
 //arrange
     public void setUp() {
-        scoreBoard = new ScoreBoard();
+        scoreBoard = new Scoreboard();
         gameOne = new Game("Canada", "USA");
         gameTwo = new Game("Spain", "Norway");
         gameThree = new Game("Sweden", "Denmark");
@@ -117,5 +117,6 @@ class ScoreBoardTest {
         assertEquals(gameOne, sortedGames.get(1));
         assertEquals(gameThree, sortedGames.get(2));
         }
+
     }
 
